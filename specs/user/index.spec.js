@@ -1,8 +1,9 @@
 import supertest from "supertest";
 import user from "../helper/user";
 import config from "../config";
+import { async } from "regenerator-runtime";
 
-describe('user', () => {
+//describe('user', () => {
   describe('POST /api/v1/login', () => {
     test('Метод должен существовать', async () => {
       const res = await supertest('https://try.vikunja.io')
@@ -33,4 +34,14 @@ describe('user', () => {
       expect(res.body.code).toEqual(1011)
     })
   })
-})
+
+  describe('GET /api/v1/user', () => {
+    test('Получение информации о пользователе', async() => {
+      const token = await user.getAuthToken();
+      // т.к. токен был получен ранее, можно к нему обратиться
+      const res = await user.user(token);
+      expect(res.status).toEqual(200);
+    })
+  })
+  
+
