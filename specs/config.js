@@ -11,4 +11,4 @@ export default config; // делаем возможность экспорта
 /*
 process.env/API_USERNAME
 process.env/API_PASSWORD
-*/ 
+*/
